@@ -1,0 +1,7 @@
+PySide6>=6.6
+numpy
+soundfile
+sounddevice
+requests
+yt-dlp[default]
+demucs==4.0.1
