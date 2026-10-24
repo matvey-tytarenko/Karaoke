@@ -2,190 +2,194 @@
 
 # 🎤 KARAOKE
 
-**Домашнее караоке, которое делает минусовку из любой песни.**
+🇬🇧 English · 🇷🇺 [Русский](README.ru.md)
 
-Найди песню, подожди пару минут и пой. Приложение само уберёт голос исполнителя,
-найдёт текст, покажет ноты и в конце поставит оценку.
+**A home karaoke app that turns any song into a backing track.**
+
+Search for a song, wait a couple of minutes, and sing. The app removes the vocals,
+finds the lyrics, shows the melody, and scores your performance.
 
 `Python` · `PySide6` · `Demucs` · `yt-dlp` · `LRCLIB`
 
-Бесплатно · Работает на твоём компьютере · Без API-ключей и подписок
+Free · Runs on your own computer · No API keys or subscriptions
 
 </div>
 
 ---
 
-## ✨ Что умеет
+## ✨ Features
 
 | | |
 |---|---|
-| 🔎 **Поиск по YouTube** | Пишешь «исполнитель + название» и добавляешь нужное видео в библиотеку |
-| 🎛 **Минусовка нейросетью** | Demucs (htdemucs от Meta) отделяет вокал от музыки прямо на твоём ПК |
-| 📝 **Текст с таймингами** | Синхронизированный текст подтягивается с LRCLIB, строка закрашивается по мере пения |
-| 🎯 **Автоподгонка текста** | Если у клипа есть вступление, текст сам сдвигается под реальный вокал |
-| 🎼 **Нотная дорожка** | Видно ноты оригинала и линию твоего голоса: зелёная, когда попадаешь, розовая, когда нет |
-| 🏆 **Баллы и рекорды** | Оценка из 100, звёзды, статистика и личный рекорд для каждой песни |
-| 🎧 **Твои записи** | После песни можно сразу послушать себя под минус. Все записи сохраняются |
-| 🗣 **Подсказка голосом** | Ползунок «Голос артиста» подмешивает оригинальный вокал, если забыл мелодию |
-| 🎙 **Проверка микрофона** | Полоска уровня прямо в главном меню |
+| 🔎 **YouTube search** | Type "artist + title" and add the video you want to your library |
+| 🎛 **AI vocal removal** | Demucs (htdemucs by Meta) separates vocals from music right on your PC |
+| 📝 **Synced lyrics** | Time-synced lyrics come from LRCLIB, and each line fills in as you sing |
+| 🎯 **Auto lyric alignment** | If a video has an intro, the lyrics shift to match the actual vocals |
+| 🎼 **Pitch lane** | Shows the original melody and your voice: green when you hit the note, pink when you miss |
+| 🏆 **Scores and records** | Score out of 100, stars, stats and a personal best for every song |
+| 🎧 **Your recordings** | Listen to yourself over the backing track right after singing. Every take is saved |
+| 🗣 **Vocal guide** | The "Artist voice" slider mixes the original vocals back in if you forget the melody |
+| 🎙 **Mic check** | A live level meter right in the main menu |
+
+> The interface is in Russian. Below, UI labels are given with English translations.
 
 ---
 
-## 🚀 Быстрый старт (Windows)
+## 🚀 Quick start (Windows)
 
-**1. Поставь Python** 3.11–3.14 с [python.org](https://www.python.org/downloads/).
-При установке обязательно отметь галочку **«Add Python to PATH»**.
+**1. Install Python** 3.11–3.14 from [python.org](https://www.python.org/downloads/).
+During setup, make sure to tick **"Add Python to PATH"**.
 
-**2. Запусти `install.bat`.** Он сам установит:
-- **ffmpeg** — работа с аудио;
-- **Deno** — без него yt-dlp не может скачивать с YouTube;
-- **PyTorch** — с CUDA, если есть видеокарта NVIDIA, иначе версию для процессора;
-- **Demucs, PySide6, yt-dlp** и остальное.
+**2. Run `install.bat`.** It installs:
+- **ffmpeg**, for audio processing;
+- **Deno**, which yt-dlp needs to download from YouTube;
+- **PyTorch**, with CUDA if you have an NVIDIA GPU and the CPU version otherwise;
+- **Demucs, PySide6, yt-dlp** and the rest.
 
-> Первая установка занимает 5–15 минут. Если ffmpeg или Deno только что установились,
-> закрой окно и открой заново, чтобы Windows их увидела.
+> The first install takes 5–15 minutes. If ffmpeg or Deno was just installed,
+> close the window and open a new one so Windows can find them.
 
-**3. Запускай `run.bat`** 🎉
+**3. Run `run.bat`** 🎉
 
 ---
 
-## 🎶 Как петь
+## 🎶 How to sing
 
-1. Введи в поиск, например, `Queen Bohemian Rhapsody` и нажми **Найти**.
-2. Нажми **+ Добавить** у подходящего видео.
-   💡 Лучше выбирать видео с **«Official Audio»** или **«Lyrics»** в названии: у клипов бывают длинные вступления.
-3. Карточка покажет прогресс обработки:
+1. Type something like `Queen Bohemian Rhapsody` and click **Найти** (Search).
+2. Click **+ Добавить** (Add) next to the right video.
+   💡 Videos with **"Official Audio"** or **"Lyrics"** in the title work best, since music videos often have long intros.
+3. The song card shows processing progress:
 
-   | Компьютер | Время на песню |
+   | Hardware | Time per song |
    |---|---|
-   | Видеокарта NVIDIA | ~20–60 секунд |
-   | Только процессор | ~1–5 минут |
+   | NVIDIA GPU | ~20–60 seconds |
+   | CPU only | ~1–5 minutes |
 
-   При самом первом запуске Demucs один раз скачает модель (~80 МБ).
-4. Кликни по готовой песне, нажми **🎤 Начать петь** и пой!
+   On the very first run, Demucs downloads its model once (~80 MB).
+4. Click the finished song, press **🎤 Начать петь** (Start singing), and sing!
 
-### ⌨️ Управление
+### ⌨️ Controls
 
-| Клавиша | Действие |
+| Key | Action |
 |:---:|---|
-| `Пробел` | пауза / продолжить |
-| `←` `→` | перемотка на 5 секунд |
-| `[` `]` | сдвинуть текст на 0.25 с раньше / позже |
-| `Esc` | закончить и узнать баллы |
+| `Space` | pause / resume |
+| `←` `→` | seek 5 seconds |
+| `[` `]` | shift lyrics 0.25 s earlier / later |
+| `Esc` | finish and see your score |
 
-Внизу экрана есть кнопка **«Авто»**: она заново подгоняет текст под вокал.
+The **Авто** (Auto) button at the bottom re-aligns the lyrics to the vocals.
 
-### 🖱 Правый клик по песне
+### 🖱 Right-click a song
 
-- **Найти текст заново.** Можно вручную поправить исполнителя и название, если текст не нашёлся или нашёлся не тот.
-- **Обработать заново.** Заново вырежет голос и найдёт текст.
-- **Удалить.**
+- **Найти текст заново** (Find lyrics again): fix the artist or title by hand if the lyrics weren't found or are wrong.
+- **Обработать заново** (Reprocess): separate the vocals and fetch the lyrics again.
+- **Удалить** (Delete).
 
 ---
 
-## 🏆 Как считаются баллы
+## 🏆 How scoring works
 
 ```
-твой голос ──► определение высоты тона (YIN) ──┐
-                                               ├──► сравнение каждые 25 мс ──► баллы
-вокал артиста ──► мелодия оригинала ───────────┘
+your voice ──► pitch detection (YIN) ───────┐
+                                            ├──► compared every 25 ms ──► score
+artist vocals ──► original melody ──────────┘
 ```
 
-- **80% оценки** — попадание в ноты. Допуск около полутона, **октава не важна**, так что можно петь ниже или выше оригинала.
-- **20% оценки** — поёшь ли ты там, где поёт артист.
-- Учтена небольшая задержка реакции и микрофона, так что совсем секунда в секунду петь не обязательно.
+- **80% of the score** is pitch accuracy. Tolerance is about one semitone, and **octave doesn't matter**, so you can sing lower or higher than the original.
+- **20% of the score** is singing where the artist sings.
+- A small delay for reaction time and mic latency is allowed, so you don't have to be frame-perfect.
 
-| Баллы | Оценка |
+| Score | Rating |
 |:---:|---|
-| 92–100 | 🌟 Легенда сцены! |
-| 80–91 | Великолепно! |
-| 65–79 | Отлично спето! |
-| 50–64 | Хорошо! |
-| 30–49 | Неплохо, продолжай! |
-| 0–29 | Попробуй ещё раз! |
+| 92–100 | 🌟 Stage legend! |
+| 80–91 | Magnificent! |
+| 65–79 | Great singing! |
+| 50–64 | Good! |
+| 30–49 | Not bad, keep going! |
+| 0–29 | Try again! |
 
 ---
 
-## 🛠 Если что-то не работает
+## 🛠 Troubleshooting
 
 <details>
-<summary><b>🎙 Микрофон молчит / полоска не двигается</b></summary>
+<summary><b>🎙 Mic is silent / meter doesn't move</b></summary>
 
-1. Выбери в списке **конкретный микрофон**, а не «Microsoft Sound Mapper».
-2. Проверь кнопку отключения микрофона на ноутбуке (часто F4, F8 или F10 со светодиодом).
-3. Параметры Windows → Система → Звук → Ввод → подними **Громкость входа** до 80–100.
-4. Параметры → Конфиденциальность → Микрофон → разреши доступ классическим приложениям.
-5. Закрой FL Studio и другие программы с ASIO-драйверами: они могут забирать микрофон себе.
-6. Запусти **`mic_test.bat`**: он проверит все входы и покажет, какой реально слышит звук.
+1. Pick a **specific microphone** from the list instead of "Microsoft Sound Mapper".
+2. Check your laptop's mic-mute key (often F4, F8 or F10, usually with an LED).
+3. Windows Settings → System → Sound → Input → raise **Input volume** to 80–100.
+4. Settings → Privacy → Microphone → allow access for desktop apps.
+5. Close FL Studio and other apps using ASIO drivers, since they can take the mic for themselves.
+6. Run **`mic_test.bat`**. It checks every input and shows which one actually picks up sound.
 </details>
 
 <details>
-<summary><b>📝 Текст спешит или опаздывает</b></summary>
+<summary><b>📝 Lyrics are early or late</b></summary>
 
-- Нажми **«Авто»** внизу экрана или подвинь текст клавишами `[` `]`. Сдвиг запоминается для песни.
-- Если текст вообще от другой версии песни (live, ремикс), найди его заново через правый клик или добавь другое видео.
+- Click **Авто** (Auto) at the bottom or nudge the lyrics with `[` `]`. The offset is saved per song.
+- If the lyrics belong to a different version entirely (live, remix), find them again via right-click or add a different video.
 </details>
 
 <details>
-<summary><b>⬇️ YouTube не скачивает</b></summary>
+<summary><b>⬇️ YouTube downloads fail</b></summary>
 
-YouTube часто что-то меняет. Запусти **`update.bat`**, он обновит yt-dlp.
-Также проверь, что установлен Deno: `winget install DenoLand.Deno`.
+YouTube changes things often. Run **`update.bat`** to update yt-dlp.
+Also make sure Deno is installed: `winget install DenoLand.Deno`.
 </details>
 
 <details>
-<summary><b>🐢 Обработка идёт очень долго</b></summary>
+<summary><b>🐢 Processing is very slow</b></summary>
 
-Без видеокарты NVIDIA нейросеть работает на процессоре, это нормально.
-Песни обрабатываются по очереди, можно добавить несколько и пойти за чаем ☕
+Without an NVIDIA GPU, the neural network runs on the CPU, which is expected.
+Songs are processed one at a time, so you can queue several and go grab a tea ☕
 </details>
 
 ---
 
-## 📁 Структура проекта
+## 📁 Project structure
 
 ```
 Karaoke website/
-├── main.py              точка входа
-├── install.bat          установка всего необходимого
-├── run.bat              запуск
-├── update.bat           обновление yt-dlp
-├── mic_test.bat         диагностика микрофона
+├── main.py              entry point
+├── install.bat          installs everything
+├── run.bat              launches the app
+├── update.bat           updates yt-dlp
+├── mic_test.bat         microphone diagnostics
 ├── app/
-│   ├── youtube.py       поиск и скачивание (yt-dlp + ffmpeg)
-│   ├── separator.py     вырезание голоса (Demucs)
-│   ├── lyrics.py        тексты с LRCLIB
-│   ├── align.py         автоподгонка текста под вокал
-│   ├── pitch.py         определение высоты тона
-│   ├── scoring.py       подсчёт баллов
-│   ├── audio.py         плеер и запись микрофона
-│   ├── pipeline.py      фоновая очередь обработки
-│   ├── library.py       библиотека песен
-│   └── ui/              интерфейс: главная, экран пения, результаты
-└── library/             твои песни
-    └── <id видео>/
-        ├── no_vocals.flac   минусовка
-        ├── vocals.flac      вокал (для оценки и подсказки)
-        ├── melody.npy       мелодия оригинала
-        ├── lyrics.json      текст
-        └── takes/           твои записи
+│   ├── youtube.py       search and download (yt-dlp + ffmpeg)
+│   ├── separator.py     vocal removal (Demucs)
+│   ├── lyrics.py        lyrics from LRCLIB
+│   ├── align.py         auto-aligns lyrics to vocals
+│   ├── pitch.py         pitch detection
+│   ├── scoring.py       scoring
+│   ├── audio.py         playback and mic recording
+│   ├── pipeline.py      background processing queue
+│   ├── library.py       song library
+│   └── ui/              interface: home, singing screen, results
+└── library/             your songs (not in git)
+    └── <video id>/
+        ├── no_vocals.flac   backing track
+        ├── vocals.flac      vocals (for scoring and the guide)
+        ├── melody.npy       original melody
+        ├── lyrics.json      lyrics
+        └── takes/           your recordings
 ```
 
 ---
 
-## 🙏 На чём построено
+## 🙏 Built with
 
-- [Demucs](https://github.com/facebookresearch/demucs) — разделение музыки на дорожки
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) — скачивание с YouTube
-- [LRCLIB](https://lrclib.net) — бесплатная база синхронизированных текстов
-- [PySide6](https://doc.qt.io/qtforpython-6/) — интерфейс на Qt
-- [sounddevice](https://python-sounddevice.readthedocs.io/) — работа со звуком
+- [Demucs](https://github.com/facebookresearch/demucs) for music source separation
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) for YouTube downloads
+- [LRCLIB](https://lrclib.net), a free database of synced lyrics
+- [PySide6](https://doc.qt.io/qtforpython-6/) for the Qt interface
+- [sounddevice](https://python-sounddevice.readthedocs.io/) for audio I/O
 
-> ⚠️ Проект для личного некоммерческого использования. Скачанная музыка и тексты принадлежат
-> их правообладателям. Не распространяй минусовки и записи с чужой музыкой.
+> ⚠️ This project is for personal, non-commercial use. Downloaded music and lyrics belong
+> to their copyright holders. Don't distribute backing tracks or recordings of other people's music.
 
 <div align="center">
 
-**Пой громко! 🎤✨**
+**Sing loud! 🎤✨**
 
 </div>
